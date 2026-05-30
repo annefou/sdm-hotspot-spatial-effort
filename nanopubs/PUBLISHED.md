@@ -2,6 +2,16 @@
 
 This file is the canonical registry of published nanopub URIs for this replication. Update it as you publish each step.
 
+## Release & archival artefacts (Phase 4)
+
+| Artefact | Identifier | Notes |
+|---|---|---|
+| Source — concept DOI | [10.5281/zenodo.20465140](https://doi.org/10.5281/zenodo.20465140) | Resolves to the latest version. Cited in `CITATION.cff` / `codemeta.json`. |
+| Source — version DOI (v0.1.0) | [10.5281/zenodo.20465141](https://doi.org/10.5281/zenodo.20465141) | This release's immutable snapshot. |
+| GitHub release | [v0.1.0](https://github.com/annefou/sdm-hotspot-spatial-effort/releases/tag/v0.1.0) | |
+| Docker image (GHCR) | `ghcr.io/annefou/sdm-hotspot-spatial-effort:0.1.0` (also `:latest`) | Built + pushed by `docker.yml` on release. Make the package public in repo → Packages if not already. |
+| Docker image — Zenodo DOI | _not minted_ | Optional (FAIR4RS A2). Set the `ZENODO_TOKEN` repo secret and re-run `docker.yml` to archive the image with its own DOI. |
+
 ## Chain
 
 | Step | Template | URI | Published |
