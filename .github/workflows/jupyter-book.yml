@@ -106,7 +106,7 @@ jobs:
 
       - name: Upload pages artifact
         if: steps.guard.outputs.skip != 'true'
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _build/html
 
@@ -121,4 +121,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
