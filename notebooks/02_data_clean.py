@@ -50,6 +50,7 @@
 
 # %%
 import json
+import os
 import zipfile
 from collections.abc import Iterator
 from datetime import date
@@ -65,7 +66,10 @@ from shapely.geometry import MultiPoint, Polygon
 # ## Constants
 
 # %%
-STRATEGIES = ["museum", "allbor"]
+# SDM_STRATEGIES limits which strategies are binned (e.g. "museum" to skip the
+# 6.5 GB allbor zip for a fast museum-first run). Mirrors 03_analysis.py.
+ALL_STRATEGIES = ["museum", "allbor"]
+STRATEGIES = os.environ.get("SDM_STRATEGIES", ",".join(ALL_STRATEGIES)).split(",")
 NSIDES = [16, 32, 64, 128, 256, 512]
 DEPTHS = {n: int(np.log2(n)) for n in NSIDES}
 
