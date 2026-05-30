@@ -17,12 +17,14 @@ platforms = ["linux-64", "osx-arm64", "win-64"]
 [dependencies]
 python = "3.12.*"
 # --- core scientific stack ---
-numpy = "*"
+# elapid 1.0.3 needs numpy>=2.0 and scikit-learn>=1.2,<1.6 — pin to stay solvable.
+numpy = ">=2.0"
 pandas = ">=2.0"
 xarray = ">=2024.6"
 scipy = "*"
 matplotlib = "*"
 pyarrow = "*"
+scikit-learn = ">=1.2,<1.6"   # MaxEnt feature transforms / logistic backend (elapid)
 # --- notebook execution + Jupyter Book ---
 jupytext = "*"
 jupyterlab = "*"
@@ -30,27 +32,31 @@ nbclient = "*"
 ipykernel = "*"
 # --- pipeline driver ---
 snakemake = "*"
-# --- replace/extend with the deps your replication needs ---
-# Examples (uncomment as needed):
-# statsmodels = "*"          # GLM/GLMM regression
-# scikit-learn = "*"         # classical ML
-# pyproj = "*"               # CRS + map projections
-# cartopy = "*"              # geographic plotting
-# netcdf4 = "*"              # NetCDF I/O — preferred over .npz for arrays (see DOMAIN.md)
-# zarr = "*"                 # Zarr — preferred for arrays >2 GB or cloud-archived (see DOMAIN.md)
-# cdsapi = "*"               # Copernicus Climate Data Store
-# copernicusmarine = "*"     # Copernicus Marine Service
-# healpix-geo = "*"          # HEALPix on geo data — preferred (use nest=True — see DOMAIN.md)
-# healpy = "*"               # HEALPix on pure-sphere (astrophysics) only
-# rasterio = "*"             # raster I/O
-# geopandas = "*"            # vector I/O
-# dask = "*"                 # out-of-core / parallel
+# --- intermediate storage formats (NEVER .npz — DOMAIN.md) ---
+netcdf4 = "*"
+zarr = "*"
+dask = "*"
+# --- geographic I/O: EU Article 12 polygons, EOO hulls, CHELSA rasters ---
+geopandas = ">=1.0"
+shapely = "*"
+pyproj = ">=3.0"
+rasterio = ">=1.2.1"          # windowed /vsicurl reads of CHELSA v2 GeoTIFFs
+fiona = "*"
+pyogrio = "*"                 # fast GPKG reader (Article 12 layer)
+rtree = ">=0.9"               # elapid spatial sampling
+tqdm = "*"
+# --- map plotting ---
+cartopy = "*"
+# --- HTTP for direct downloads ---
+requests = "*"
 
-# Pip-only deps go in [pypi-dependencies]. Conda-forge is preferred where available.
-# [pypi-dependencies]
-# pygbif = "*"               # GBIF occurrences
-# polytope-client = "*"      # Destination Earth Climate DT
-# earthkit-data = "*"
+# Pip-only deps. Conda-forge is preferred where available.
+[pypi-dependencies]
+pygbif = "*"           # GBIF occurrence downloads
+# HEALPix on geographic data (NESTED, WGS84-aware) — DOMAIN.md mandate.
+healpix-geo = ">=0.1.2"
+# Phillips-style presence-background MaxEnt (pure-Python, CPU) — the SDM engine.
+elapid = ">=1.0.3"
 
 [feature.docs.dependencies]
 mystmd = "*"
