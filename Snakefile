@@ -35,9 +35,14 @@ FIGURES = "figures"
 
 rule all:
     input:
+        # Arm B — Iberian hotspot replication (notebooks 01-04).
         f"{FIGURES}/main_result.png",
         f"{RESULTS}/sdm_misidentification.parquet",
         f"{RESULTS}/headline.json",
+        # Arm A — Phillips 2009 reproduction on the Elith 2006 NCEAS data (05-07).
+        f"{FIGURES}/repro_phillips.png",
+        f"{RESULTS}/repro_phillips_auc.parquet",
+        f"{RESULTS}/repro_headline.json",
 
 
 # ---------- 01: Data download ----------
@@ -128,3 +133,65 @@ rule figures:
         "cd " + NOTEBOOKS + " && "
         "jupytext --to notebook 04_figures.py && "
         "jupyter execute --inplace 04_figures.ipynb 2>&1 | tee ../{log}"
+
+
+# ==========================================================================
+# Arm A — Reproduction of Phillips et al. (2009) on the Elith et al. (2006)
+# NCEAS benchmark (distributed as the disdat R package; read via pyreadr).
+# A parallel sub-DAG: download -> analysis -> figure. Validates that the
+# target-group-background MaxEnt implementation is faithful to the paper
+# (Table 2, Maxent: random AUC 0.7276 -> target-group AUC 0.7569).
+# Independent of the Iberian rules above.
+# ==========================================================================
+
+
+# ---------- 05: Reproduction download ----------
+# Enumerate + fetch the disdat .rds tables (train_po / train_bg / test_pa /
+# test_env for 6 regions) from rspatial/disdat; write a provenance registry.
+rule repro_download:
+    output:
+        sources = f"{DATA}/raw/repro_sources.json",
+    log:
+        f"{RESULTS}/logs/05_repro_download.log",
+    shell:
+        "mkdir -p $(dirname {log}) {DATA}/disdat && "
+        "cd " + NOTEBOOKS + " && "
+        "jupytext --to notebook 05_repro_download.py && "
+        "jupyter execute --inplace 05_repro_download.ipynb 2>&1 | tee ../{log}"
+
+
+# ---------- 06: Reproduction analysis ----------
+# Per region/group: fit elapid MaxEnt with random vs target-group background,
+# evaluate per-species AUC on the independent presence-absence sites, aggregate.
+rule repro_analysis:
+    input:
+        sources = f"{DATA}/raw/repro_sources.json",
+    output:
+        auc = f"{RESULTS}/repro_phillips_auc.parquet",
+        headline = f"{RESULTS}/repro_headline.json",
+    log:
+        f"{RESULTS}/logs/06_repro_analysis.log",
+    shell:
+        "mkdir -p $(dirname {log}) " + RESULTS + " && "
+        "cd " + NOTEBOOKS + " && "
+        "jupytext --to notebook 06_repro_analysis.py && "
+        "jupyter execute --inplace 06_repro_analysis.ipynb 2>&1 | tee ../{log}"
+
+
+# ---------- 07: Reproduction figure ----------
+# Mean AUC random vs target-group (overall + per region), with Phillips'
+# Table 2 reference values marked.
+rule repro_figure:
+    input:
+        auc = f"{RESULTS}/repro_phillips_auc.parquet",
+        headline = f"{RESULTS}/repro_headline.json",
+    output:
+        png = f"{FIGURES}/repro_phillips.png",
+        pdf = f"{FIGURES}/repro_phillips.pdf",
+    log:
+        f"{RESULTS}/logs/07_repro_figure.log",
+    shell:
+        "mkdir -p $(dirname {log}) " + FIGURES + " && "
+        "cd " + NOTEBOOKS + " && "
+        "jupytext --to notebook 07_repro_figure.py && "
+        "jupyter execute --inplace 07_repro_figure.ipynb 2>&1 | tee ../{log}"

@@ -36,6 +36,8 @@ snakemake = "*"
 netcdf4 = "*"
 zarr = "*"
 dask = "*"
+# --- reading R .rds files in pure Python (no R) — disdat reproduction arm ---
+pyreadr = "*"
 # --- geographic I/O: EU Article 12 polygons, EOO hulls, CHELSA rasters ---
 geopandas = ">=1.0"
 shapely = "*"

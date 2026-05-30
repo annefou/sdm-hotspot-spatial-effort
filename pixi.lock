@@ -322,6 +322,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyogrio-0.12.1-py312h053e1f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyproj-3.7.2-py312he675c61_3.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/pyreadr-0.5.6-py312h64b5eac_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyside6-6.11.1-py312h50ac2ff_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
@@ -726,6 +727,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyogrio-0.12.1-py312h07dd7c3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyproj-3.7.2-py312hce17ad6_3.conda
+      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyreadr-0.5.6-py312h2760da6_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/python-3.12.13-h8561d8f_0_cpython.conda
@@ -1111,6 +1113,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyproj-3.7.2-py312h8b773d8_3.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyreadline3-3.5.6-py312h2e8e312_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/win-64/pyreadr-0.5.6-py312h8d08f08_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyside6-6.11.1-py312ha7d0d2e_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyh09c184e_7.conda
@@ -1552,6 +1555,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyogrio-0.12.1-py312h053e1f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyproj-3.7.2-py312he675c61_3.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/pyreadr-0.5.6-py312h64b5eac_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyside6-6.11.1-py312h50ac2ff_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
@@ -1959,6 +1963,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyogrio-0.12.1-py312h07dd7c3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyproj-3.7.2-py312hce17ad6_3.conda
+      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyreadr-0.5.6-py312h2760da6_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/python-3.12.13-h8561d8f_0_cpython.conda
@@ -2346,6 +2351,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyproj-3.7.2-py312h8b773d8_3.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyreadline3-3.5.6-py312h2e8e312_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/win-64/pyreadr-0.5.6-py312h8d08f08_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyside6-6.11.1-py312ha7d0d2e_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyh09c184e_7.conda
@@ -2787,6 +2793,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyogrio-0.12.1-py312h053e1f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyproj-3.7.2-py312he675c61_3.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/pyreadr-0.5.6-py312h64b5eac_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyside6-6.11.1-py312h50ac2ff_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
@@ -3195,6 +3202,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyogrio-0.12.1-py312h07dd7c3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyproj-3.7.2-py312hce17ad6_3.conda
+      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyreadr-0.5.6-py312h2760da6_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyha55dd90_7.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pytest-9.0.3-pyhc364b38_1.conda
@@ -3583,6 +3591,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyparsing-3.3.2-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyproj-3.7.2-py312h8b773d8_3.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyreadline3-3.5.6-py312h2e8e312_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/win-64/pyreadr-0.5.6-py312h8d08f08_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pyside6-6.11.1-py312ha7d0d2e_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/pysocks-1.7.1-pyh09c184e_7.conda
@@ -13387,6 +13396,61 @@ packages:
   - pkg:pypi/pyreadline3?source=hash-mapping
   size: 171538
   timestamp: 1778848418493
+- conda: https://conda.anaconda.org/conda-forge/linux-64/pyreadr-0.5.6-py312h64b5eac_0.conda
+  sha256: fc7a4947a487c76ec5c115fe2c466571e8f7d5df629f3288592b7f6afe749b41
+  md5: e0868a52366d2a928185b586b56d9cc9
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - bzip2 >=1.0.8,<2.0a0
+  - libgcc >=14
+  - liblzma >=5.8.3,<6.0a0
+  - libzlib >=1.3.2,<2.0a0
+  - pandas
+  - python >=3.12,<3.13.0a0
+  - python_abi 3.12.* *_cp312
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  purls:
+  - pkg:pypi/pyreadr?source=hash-mapping
+  size: 284162
+  timestamp: 1776106574829
+- conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyreadr-0.5.6-py312h2760da6_0.conda
+  sha256: c1b752ef019742b4717eecf19950825045f058dcc231bc00fc8465556387263c
+  md5: 3989b8f982e8d580ee9fc64f905ff2ec
+  depends:
+  - __osx >=11.0
+  - bzip2 >=1.0.8,<2.0a0
+  - liblzma >=5.8.3,<6.0a0
+  - libzlib >=1.3.2,<2.0a0
+  - pandas
+  - python >=3.12,<3.13.0a0
+  - python >=3.12,<3.13.0a0 *_cpython
+  - python_abi 3.12.* *_cp312
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  purls:
+  - pkg:pypi/pyreadr?source=hash-mapping
+  size: 275256
+  timestamp: 1776106888851
+- conda: https://conda.anaconda.org/conda-forge/win-64/pyreadr-0.5.6-py312h8d08f08_0.conda
+  sha256: 2e5b0ac04b6762d623abc09a843bc88f99c984dbb6e8fa6e84caa97b85661d04
+  md5: a66f30076063cdfaf311a0d3d90eca44
+  depends:
+  - bzip2 >=1.0.8,<2.0a0
+  - libgcc >=14
+  - liblzma >=5.8.3,<6.0a0
+  - libwinpthread >=12.0.0.r4.gg4f2fc60ca
+  - libzlib >=1.3.2,<2.0a0
+  - pandas
+  - python >=3.12,<3.13.0a0
+  - python_abi 3.12.* *_cp312
+  - ucrt >=10.0.20348.0
+  license: AGPL-3.0-or-later
+  license_family: AGPL
+  purls:
+  - pkg:pypi/pyreadr?source=hash-mapping
+  size: 1073837
+  timestamp: 1776106771508
 - conda: https://conda.anaconda.org/conda-forge/noarch/pyshp-3.0.9-pyhd8ed1ab_0.conda
   sha256: db79a66b4ad8b936757e9339984eee3df6ef297e1c300592a73d51d7f6d4ed7d
   md5: d260a4aec1cb8c91e0803afc6224494c
