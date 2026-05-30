@@ -55,6 +55,7 @@
 # %%
 import json
 import os
+import shutil
 import time
 import zipfile
 from datetime import date
@@ -525,17 +526,57 @@ SOURCES.append({
 # %% [markdown]
 # ## EU Article 12 expert-rangemap gold standard
 #
-# EU Birds Directive Article 12 distribution data (EEA, 2013–2018). Same
-# acquisition logic as the sibling: use a local file if present, else
-# `ART12_DOWNLOAD_URL`, else a deterministic synthetic GPKG matching the real
-# schema (so `03_analysis.py`'s comparison runs on a fresh checkout).
+# EU Birds Directive Article 12 distribution data (EEA, 2013–2018). Acquisition:
+# use a local GPKG if present, else download the EEA datashare package (a zip
+# wrapping an ESRI File Geodatabase) and convert the target layer to GeoPackage,
+# else write a deterministic synthetic GPKG matching the real schema (so the
+# pipeline still runs offline). The download URL defaults to the resolved EEA
+# datashare link and is overridable via `ART12_DOWNLOAD_URL`.
 
 # %%
 ART12_GPKG = ART12_DIR / "ART12_3035_distribution_data_without_sensitive.gpkg"
 ART12_LAYER = "EU_ART12_birds_distribution_2013_2018_without_sensitive_species"
 ART12_FLAG = RAW_DIR / "USING_SYNTHETIC_DEMO_DATA_art12.txt"
 ART12_LANDING = "https://sdi.eea.europa.eu/data/e2face16-f352-4aff-9e4f-0ad1306f89b5"
-ART12_DOWNLOAD_URL = os.environ.get("ART12_DOWNLOAD_URL")
+# EEA datashare pre-packaged download (resolved from ART12_LANDING). It delivers
+# a zip containing an ESRI File Geodatabase (.gdb), which we convert to the
+# expected GeoPackage below. Override via ART12_DOWNLOAD_URL if EEA moves it.
+ART12_DEFAULT_URL = "https://sdi.eea.europa.eu/datashare/s/wcpT9ak6BnyY8kL/download"
+ART12_DOWNLOAD_URL = os.environ.get("ART12_DOWNLOAD_URL", ART12_DEFAULT_URL)
+
+
+def materialise_art12_from_archive(archive: Path, gpkg_path: Path,
+                                   layer: str) -> None:
+    """Turn a downloaded EEA archive into the expected GeoPackage `layer`.
+
+    The EEA datashare delivers a zip wrapping an ESRI File Geodatabase (.gdb);
+    convert its `layer` to GPKG so `03_analysis.py` reads it unchanged. A zip
+    that already contains a .gpkg, or a bare .gpkg file, is handled too.
+    """
+    import geopandas as gpd
+
+    if not zipfile.is_zipfile(archive):
+        archive.rename(gpkg_path)  # already a bare GeoPackage
+        return
+    with zipfile.ZipFile(archive) as zf:
+        gpkg_members = [n for n in zf.namelist() if n.lower().endswith(".gpkg")]
+        if gpkg_members:
+            with zf.open(gpkg_members[0]) as src, open(gpkg_path, "wb") as dst:
+                dst.write(src.read())
+            return
+        extract_dir = gpkg_path.parent / "_art12_extract"
+        shutil.rmtree(extract_dir, ignore_errors=True)
+        zf.extractall(extract_dir)
+    try:
+        gdbs = list(extract_dir.rglob("*.gdb"))
+        if not gdbs:
+            raise RuntimeError("Article 12 archive has no .gpkg or .gdb")
+        gdf = gpd.read_file(gdbs[0], layer=layer, engine="pyogrio")
+        if gpkg_path.exists():
+            gpkg_path.unlink()
+        gdf.to_file(gpkg_path, layer=layer, driver="GPKG")
+    finally:
+        shutil.rmtree(extract_dir, ignore_errors=True)
 
 
 def make_synthetic_art12(gpkg_path: Path, layer: str) -> dict:
@@ -591,15 +632,14 @@ elif ART12_DOWNLOAD_URL:
         with open(tmp, "wb") as f:
             for chunk in r.iter_content(chunk_size=1 << 16):
                 f.write(chunk)
-        if zipfile.is_zipfile(tmp):
-            with zipfile.ZipFile(tmp) as zf:
-                members = [n for n in zf.namelist() if n.endswith(".gpkg")]
-                if members:
-                    with zf.open(members[0]) as src, open(ART12_GPKG, "wb") as dst:
-                        dst.write(src.read())
+        materialise_art12_from_archive(tmp, ART12_GPKG, ART12_LAYER)
+        if tmp.exists():
             tmp.unlink()
-        else:
-            tmp.rename(ART12_GPKG)
+        # Confirm the real layer + the species column 03_analysis.py needs.
+        import pyogrio
+        cols = pyogrio.read_info(ART12_GPKG, layer=ART12_LAYER)["fields"]
+        if "speciesnameEU" not in cols:
+            raise RuntimeError(f"GPKG layer missing speciesnameEU (got {list(cols)})")
         print(f"  saved {ART12_GPKG} ({ART12_GPKG.stat().st_size:,} bytes)")
         if ART12_FLAG.exists():
             ART12_FLAG.unlink()
