@@ -94,7 +94,7 @@ for j, surf in enumerate(SURFACES):
 axL.set_xticks(xpos)
 axL.set_xticklabels(strategies)
 axL.set_ylabel(f"Hotspot misidentification (%)  —  top-5 % non-overlap\n{metric_label}")
-axL.set_ylim(0, 100)
+axL.set_ylim(0, 108)  # headroom so the 100 % bars + value labels aren't clipped
 axL.set_xlabel("Basis-of-record strategy")
 axL.set_title(f"At Nside {HEADLINE_NSIDE} (≈ 25 km)", fontsize=11)
 axL.legend(loc="lower left", fontsize=8, framealpha=0.92)
@@ -116,9 +116,12 @@ axR.set_xticks(sorted(results["nside"].unique()))
 axR.get_xaxis().set_major_formatter(plt.matplotlib.ticker.ScalarFormatter())
 axR.set_xlabel("HEALPix Nside (finer →)")
 axR.set_ylabel(f"Misidentification (%) {metric_label}")
-axR.set_ylim(0, 100)
+# Data span ~66–100 %; show the H&J band (47.8–68.6) and leave top headroom so
+# the many series sitting at 100 % are fully visible, not clipped at the axis.
+axR.set_ylim(42, 104)
+axR.margins(x=0.04)
 axR.set_title("Across the scale ladder", fontsize=11)
-axR.legend(loc="lower right", fontsize=7, framealpha=0.92)
+axR.legend(loc="lower center", ncol=2, fontsize=7, framealpha=0.92)
 
 smoke = headline.get("smoke_test", False)
 synthetic = str(ref["synthetic"].iloc[0]).lower() == "true" if len(ref) else False
