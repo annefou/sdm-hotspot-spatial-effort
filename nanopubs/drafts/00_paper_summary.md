@@ -52,8 +52,10 @@
 Which of the three FORRT Study Types fits this replication?
 
 - [ ] **Reproduction Study** — direct reproduction: same methodology, same tools.
-- [ ] **Replication Study** — replication with different methodology or conditions.
-- [x] **Reproduction/Replication Study** — both (decided 2026-05-30; see the two-arm design below).
+- [x] **Replication Study** — replication with different methodology or conditions.
+- [ ] **Reproduction/Replication Study** — both.
+
+> **Scope (decided 2026-05-30):** this repo is the **Replication Study only** (Arm B — Iberian hotspots). The method-validation reproduction of Phillips' AUC result (formerly "Arm A") now lives in its own repo, [`sdm-phillips-reproduction`](https://github.com/annefou/sdm-phillips-reproduction) (a clean Reproduction Study, Outcome Validated, CiTO `confirms` Phillips). This repo cross-cites it for method faithfulness.
 
 **Justification (LOCKED in HANDOFF.md, confirmed by this analysis):** This is a **Replication Study**. The replication uses *different data* (Iberian breeding birds from GBIF, not Phillips' 226-species 6-region NCEAS collection), a *different substrate* (HEALPix-NESTED equal-area cells, Nside 256 ≈ 25 km), and — under framing (b) — a *different outcome metric* (top-5% richness-hotspot misidentification vs the EU Article 12 expert-rangemap gold standard, rather than per-species AUC on presence–absence test sites). It tests whether Phillips' recommended target-group-background correction recovers the effort-distorted hotspots that the sibling coverage-rarefaction study (Contradicted) could not. The CiTO is `extends` the sibling Outcome + `usesMethodIn` → this methods paper (NOT `disputes`), regardless of the replication's own result. Note: under framing (a) the replication would stay closer to Phillips' own AUC metric (per-species AUC improvement on Iberian birds vs random background), which is a more literal reproduction of his headline but still on different data/region.
 
@@ -71,15 +73,13 @@ These choices are fixed *before* any analysis is run (HANDOFF.md: "pre-register 
 - **GBIF inputs:** reuse the sibling DOIs identically — `10.15468/dl.r8pcat` (museum), `10.15468/dl.e9xv7p` (allbor). No new mint.
 - **Outcome verdict is open:** if target-group background restores agreement → Validated/PartiallySupported; if it fails too → Contradicted (for the correction hypothesis). CiTO `extends` the sibling Outcome + `usesMethodIn` → this paper regardless (HANDOFF). Stay honest (DOMAIN § honest negative results).
 
-## Two-arm design — Reproduction + Replication (decided 2026-05-30)
+## This study (Iberian hotspots) + its companion reproduction
 
-The study has two arms, yielding two Outcomes:
+**This repo (the Replication Study).** Per-species MaxEnt with target-group vs random background on Iberian GBIF birds (notebooks 01–04), summed to per-cell predicted richness, top-5% hotspot misidentification vs the EU Article 12 gold standard. Headline (full both-strategy run, Nside 256, hinge features, vs Article 12): target-group SDM does **NOT** restore agreement — museum 97.24% (raw 93.71%), allbor 100.0% (raw 86.59%); worse than raw in both, robust to the feature set (linear+quadratic gives museum 96.67% / allbor 100.0%). Direction = **Contradicted** for the hotspot-restoration hypothesis.
 
-**Arm A — Reproduction (same data, same method).** Reproduce Phillips' headline AUC result on his own data (the Elith et al. 2006 NCEAS dataset, packaged as the `disdat` R package; read in Python via `pyreadr` from the rspatial/disdat `.rds` files — no R dependency). Fit per-species MaxEnt via `elapid` with random background vs target-group background; evaluate AUC on the independent presence–absence sites. Validation target = Phillips Table 2 Maxent row: mean AUC **0.7276 (random) → 0.7569 (target-group)** over 226 species, with target-group > random. Maxent is the required method (it is our Iberian-arm engine); BRT is an optional secondary check. This arm proves the implementation is faithful to the paper.
+**Companion reproduction (separate repo).** The faithfulness of this elapid MaxEnt + target-group-background implementation is established independently in [`sdm-phillips-reproduction`](https://github.com/annefou/sdm-phillips-reproduction): on Phillips' own data (Elith et al. 2006 NCEAS benchmark) it reproduces his Table 2 AUC gain — mean AUC **0.7163 (random) → 0.7468 (target-group)**, +0.0305 vs Phillips' +0.0293 (Outcome: Validated, CiTO `confirms` Phillips).
 
-**Arm B — Replication/extension (Iberian hotspots).** The existing 4-notebook pipeline: per-species MaxEnt with target-group vs random background on Iberian GBIF birds, summed to per-cell predicted richness, top-5% hotspot misidentification vs the EU Article 12 gold standard. Headline (full both-strategy run, Nside 256, vs Article 12): target-group SDM does NOT restore agreement — museum 96.67% (raw 93.71%), allbor 100.0% (raw 86.59%); worse than raw in both, robust to hinge features (museum hinge: target-group 97.24% vs raw 93.71%). Direction = Contradicted for the hotspot-restoration hypothesis.
-
-**Why both:** Arm A decouples "is our method faithful?" from Arm B's "does the correction restore hotspots?". If Arm A reproduces Phillips' AUC gains AND Arm B still fails on hotspots, the negative hotspot result is attributable to the *hotspot question*, not a broken implementation. CiTO can then `confirms` Phillips (Arm A reproduced his result) while `extends` the sibling on the hotspot question (Arm B).
+**Why this matters for the verdict.** The reproduction decouples "is the method faithful?" from "does the correction restore hotspots?". Because the method demonstrably reproduces Phillips' AUC result, the hotspot failure here is attributable to the *hotspot question* — effort bias as a spatial sampling-location problem — not to a broken implementation. This repo's CiTO `extends` the sibling Outcome + `usesMethodIn` Phillips (NOT `disputes` — we do not dispute Phillips' actual AUC claim, which the companion repo confirms).
 
 ## Notes for downstream drafts
 

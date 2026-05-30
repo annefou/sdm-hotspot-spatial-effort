@@ -77,17 +77,16 @@ jobs:
         if: steps.guard.outputs.skip != 'true'
         env:
           # Fast CI smoke: synthetic inputs (no 7 GB GBIF / CHELSA / 237 MB
-          # Article-12 downloads), capped species + Nside ladder, one disdat
-          # region. Validates the pipeline runs end-to-end in a few minutes.
-          # The real headline numbers come from a full local run, committed
-          # under results/ + figures/. To run CI against real data instead,
-          # add GBIF/cache secrets and drop these env vars.
+          # Article-12 downloads), capped species + Nside ladder. Validates the
+          # pipeline runs end-to-end in a few minutes. The real headline numbers
+          # come from a full local run, committed under results/ + figures/.
+          # To run CI against real data instead, add GBIF/cache secrets and drop
+          # these env vars.
           GBIF_FORCE_SYNTHETIC: "1"
           CHELSA_FORCE_SYNTHETIC: "1"
           ART12_DOWNLOAD_URL: ""
           SDM_NSIDES: "64,256"
           SDM_MAX_SPECIES: "15"
-          REPRO_REGIONS: "AWT"
         run: pixi run snakemake --cores 1
 
       - name: Upload results

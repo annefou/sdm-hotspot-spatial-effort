@@ -48,7 +48,6 @@
     "elapid (MaxEnt presence-background SDM)",
     "healpix-geo (geographic HEALPix, NESTED, WGS84)",
     "pygbif (GBIF occurrence downloads)",
-    "pyreadr (read R .rds disdat data in Python)",
     "xarray",
     "geopandas",
     "rasterio",

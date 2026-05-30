@@ -40,20 +40,16 @@ references:
         given-names: "Steven"
     year: "2009"
     doi: "10.1890/07-2153.1"
-  # Reproduction-arm data: the Elith et al. 2006 NCEAS benchmark dataset,
-  # packaged as the disdat R package (read in Python via pyreadr).
-  - type: data
-    title: "Presence-only and presence-absence data for comparing species distribution modeling methods (disdat)"
-    authors:
-      - family-names: "Elith"
-        given-names: "Jane"
-      - family-names: "Graham"
-        given-names: "Catherine"
-      - family-names: "Valavi"
-        given-names: "Roozbeh"
-    year: "2020"
-    doi: "10.17161/bi.v15i2.13384"
-  # Iberian-arm data: two GBIF occurrence downloads (reused from the sibling
+  # Companion reproduction that validates the method used here: on Phillips'
+  # own data (Elith et al. 2006 NCEAS benchmark) the same elapid MaxEnt +
+  # target-group-background implementation reproduces his Table 2 AUC gain.
+  # That this correction nonetheless fails to restore hotspots (below) is
+  # therefore a property of the hotspot question, not a broken implementation.
+  - type: software
+    title: "sdm-phillips-reproduction — reproduction of Phillips et al. 2009 Table 2 (target-group background improves SDM AUC)"
+    url: "https://github.com/annefou/sdm-phillips-reproduction"
+    notes: "Method-validation companion. AUC random 0.7163 -> target-group 0.7468 (Validated), reproducing Phillips' +0.029."
+  # GBIF data: two occurrence downloads (reused from the sibling
   # chain), one DOI per basis-of-record strategy. DOMAIN.md mandates a download
   # DOI per query, cited here and in the Replication Study Methodology.
   - type: data
