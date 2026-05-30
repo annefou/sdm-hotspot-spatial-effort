@@ -18,7 +18,7 @@
 Format: starts with `10.` — bare DOI, **NOT** `https://doi.org/...` form.
 
 ```
-{{PAPER_DOI}}
+10.1890/07-2153.1
 ```
 
 ### Quote mode (radio button)

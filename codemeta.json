@@ -1,13 +1,13 @@
 {
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
-  "name": "{{REPO_NAME}}",
-  "description": "{{REPO_DESCRIPTION}}",
+  "name": "sdm-hotspot-spatial-effort",
+  "description": "Third chain in the Iberian-bird hotspot effort-bias family: tests whether a spatially-explicit sampling-effort correction (presence-only SDMs, rooted on Phillips et al. 2009) recovers GBIF biodiversity hotspots against the EU Article 12 expert-rangemap gold standard, after coverage-based rarefaction failed.",
   "version": "0.1.0",
-  "dateCreated": "{{RELEASE_DATE}}",
-  "dateModified": "{{RELEASE_DATE}}",
+  "dateCreated": "2026-05-30",
+  "dateModified": "2026-05-30",
   "license": "https://spdx.org/licenses/MIT",
-  "codeRepository": "https://github.com/{{REPO_ORG}}/{{REPO_NAME}}",
+  "codeRepository": "https://github.com/annefou/sdm-hotspot-spatial-effort",
   "identifier": "{{ZENODO_DOI}}",
   "@id": "{{ZENODO_DOI}}",
   "programmingLanguage": {
@@ -19,12 +19,12 @@
   "author": [
     {
       "@type": "Person",
-      "givenName": "{{AUTHOR_GIVEN}}",
-      "familyName": "{{AUTHOR_FAMILY}}",
-      "@id": "{{AUTHOR_ORCID}}",
+      "givenName": "Anne",
+      "familyName": "Fouilloux",
+      "@id": "https://orcid.org/0000-0002-1784-2920",
       "affiliation": {
         "@type": "Organization",
-        "name": "{{AUTHOR_AFFILIATION}}"
+        "name": "LifeWatch ERIC"
       }
     }
   ],
@@ -37,9 +37,9 @@
   ],
   "referencePublication": {
     "@type": "ScholarlyArticle",
-    "name": "{{PAPER_TITLE}}",
-    "datePublished": "{{PAPER_YEAR}}",
-    "@id": "https://doi.org/{{PAPER_DOI}}"
+    "name": "Sample selection bias and presence-only distribution models: implications for background and pseudo-absence data",
+    "datePublished": "2009",
+    "@id": "https://doi.org/10.1890/07-2153.1"
   },
   "isPartOf": {
     "@type": "Organization",
