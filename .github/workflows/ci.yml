@@ -23,7 +23,8 @@ jobs:
           # GitHub release mints the concept DOI — so don't treat it as a blocker.
           # See docs/fair4rs-checklist.md.
           placeholder_files=$(grep -rln '{{[A-Z_]\+}}' . --include='*.md' --include='*.yml' --include='*.yaml' --include='*.json' --include='*.cff' --include='*.py' --include='*.toml' 2>/dev/null \
-            | grep -v 'claude/skills/init-template/' \
+            | grep -v '\.claude/' \
+            | grep -v 'CLAUDE\.md' \
             | while read f; do
                 if grep -oE '\{\{[A-Z_]+\}\}' "$f" | grep -qv '{{ZENODO_DOI}}'; then
                   echo "$f"
@@ -72,8 +73,21 @@ jobs:
       #     path: data/raw
       #     key: input-data-v1
 
-      - name: Run pipeline
+      - name: Run pipeline (capped synthetic smoke)
         if: steps.guard.outputs.skip != 'true'
+        env:
+          # Fast CI smoke: synthetic inputs (no 7 GB GBIF / CHELSA / 237 MB
+          # Article-12 downloads), capped species + Nside ladder, one disdat
+          # region. Validates the pipeline runs end-to-end in a few minutes.
+          # The real headline numbers come from a full local run, committed
+          # under results/ + figures/. To run CI against real data instead,
+          # add GBIF/cache secrets and drop these env vars.
+          GBIF_FORCE_SYNTHETIC: "1"
+          CHELSA_FORCE_SYNTHETIC: "1"
+          ART12_DOWNLOAD_URL: ""
+          SDM_NSIDES: "64,256"
+          SDM_MAX_SPECIES: "15"
+          REPRO_REGIONS: "AWT"
         run: pixi run snakemake --cores 1
 
       - name: Upload results
