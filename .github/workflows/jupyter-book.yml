@@ -21,7 +21,7 @@ jobs:
       skip: ${{ steps.guard.outputs.skip }}
       pages_enabled: ${{ steps.pages_check.outputs.pages_enabled }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Skip if template has not been initialised
         id: guard
