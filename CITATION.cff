@@ -24,6 +24,14 @@ keywords:
   - FORRT
   - nanopublication
   - Science-Live
+  - species-distribution-model
+  - MaxEnt
+  - target-group-background
+  - sample-selection-bias
+  - biodiversity-hotspot
+  - GBIF
+  - HEALPix
+  - Iberian-birds
 references:
   - type: article
     title: "Sample selection bias and presence-only distribution models: implications for background and pseudo-absence data"
@@ -32,6 +40,30 @@ references:
         given-names: "Steven"
     year: "2009"
     doi: "10.1890/07-2153.1"
+  # Reproduction-arm data: the Elith et al. 2006 NCEAS benchmark dataset,
+  # packaged as the disdat R package (read in Python via pyreadr).
+  - type: data
+    title: "Presence-only and presence-absence data for comparing species distribution modeling methods (disdat)"
+    authors:
+      - family-names: "Elith"
+        given-names: "Jane"
+      - family-names: "Graham"
+        given-names: "Catherine"
+      - family-names: "Valavi"
+        given-names: "Roozbeh"
+    year: "2020"
+    doi: "10.17161/bi.v15i2.13384"
+  # Iberian-arm data: two GBIF occurrence downloads (reused from the sibling
+  # chain), one DOI per basis-of-record strategy. DOMAIN.md mandates a download
+  # DOI per query, cited here and in the Replication Study Methodology.
+  - type: data
+    title: "GBIF Occurrence Download — Iberian birds, museum + sensor (PRESERVED_SPECIMEN + MACHINE_OBSERVATION)"
+    year: "2026"
+    doi: "10.15468/dl.r8pcat"
+  - type: data
+    title: "GBIF Occurrence Download — Iberian birds, all observations (incl. HUMAN_OBSERVATION citizen science)"
+    year: "2026"
+    doi: "10.15468/dl.e9xv7p"
   # Prior FORRT chain this replication extends or qualifies. The URI below
   # is the canonical persistent pointer to the prior constellation; the
   # imported summary itself (CHAIN_SUMMARY.md, constellation.json, cached
