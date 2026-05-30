@@ -8,8 +8,8 @@
   "dateModified": "2026-05-30",
   "license": "https://spdx.org/licenses/MIT",
   "codeRepository": "https://github.com/annefou/sdm-hotspot-spatial-effort",
-  "identifier": "{{ZENODO_DOI}}",
-  "@id": "{{ZENODO_DOI}}",
+  "identifier": "https://doi.org/10.5281/zenodo.20465140",
+  "@id": "https://doi.org/10.5281/zenodo.20465140",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "Python",

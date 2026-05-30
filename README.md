@@ -4,7 +4,7 @@
 [![Jupyter Book](https://github.com/annefou/sdm-hotspot-spatial-effort/actions/workflows/jupyter-book.yml/badge.svg)](https://annefou.github.io/sdm-hotspot-spatial-effort/)
 [![Docker](https://github.com/annefou/sdm-hotspot-spatial-effort/actions/workflows/docker.yml/badge.svg)](https://github.com/annefou/sdm-hotspot-spatial-effort/pkgs/container/sdm-hotspot-spatial-effort)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/{{ZENODO_DOI}}.svg)]({{ZENODO_DOI}})
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20465140.svg)](https://doi.org/10.5281/zenodo.20465140)
 [![FAIR4RS](https://img.shields.io/badge/FAIR4RS-conformant-brightgreen)](docs/fair4rs-checklist.md)
 [![FORRT](https://img.shields.io/badge/FORRT-replication-blue)](https://forrt.org/)
 [![Science Live](https://img.shields.io/badge/Science%20Live-nanopub%20chain-purple)](nanopubs/PUBLISHED.md)
@@ -115,7 +115,7 @@ For lower-level nanopub work — retraction, superseding, batch publishing — s
 
 If you use this work, please cite both:
 
-- This software: [`CITATION.cff`](CITATION.cff) → DOI [{{ZENODO_DOI}}]({{ZENODO_DOI}})
+- This software: [`CITATION.cff`](CITATION.cff) → DOI [10.5281/zenodo.20465140](https://doi.org/10.5281/zenodo.20465140)
 - The original paper: [10.1890/07-2153.1](https://doi.org/10.1890/07-2153.1)
 
 ## Acknowledgements
