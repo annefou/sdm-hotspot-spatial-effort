@@ -9,8 +9,8 @@ authors:
     affiliation: "LifeWatch ERIC"
 repository-code: "https://github.com/annefou/sdm-hotspot-spatial-effort"
 license: MIT
-version: "0.1.0"
-date-released: "2026-05-30"
+version: "0.2.0"
+date-released: "2026-05-31"
 # After your first GitHub release the Zenodo integration mints a concept DOI.
 # Replace this once available (run /init-template again or edit by hand):
 doi: "10.5281/zenodo.20465140"
@@ -48,7 +48,8 @@ references:
   - type: software
     title: "sdm-phillips-reproduction — reproduction of Phillips et al. 2009 Table 2 (target-group background improves SDM AUC)"
     url: "https://github.com/annefou/sdm-phillips-reproduction"
-    notes: "Method-validation companion. AUC random 0.7163 -> target-group 0.7468 (Validated), reproducing Phillips' +0.029."
+    doi: "10.5281/zenodo.20473156"
+    notes: "Method-validation companion (Zenodo concept DOI). AUC random 0.7163 -> target-group 0.7468 (Validated), reproducing Phillips' +0.029."
   # GBIF data: two occurrence downloads (reused from the sibling
   # chain), one DOI per basis-of-record strategy. DOMAIN.md mandates a download
   # DOI per query, cited here and in the Replication Study Methodology.
