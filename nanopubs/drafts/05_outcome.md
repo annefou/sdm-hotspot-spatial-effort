@@ -35,8 +35,10 @@ URI of the Replication Study published in step 04. **Pending — publish step 04
 
 ### Repository URL (text input, required)
 
+> Convention used here: put the **Zenodo concept DOI** (machine-actionable, archival) in this field, and name the GitHub repo in the conclusion/evidence text. The DOI MUST be **this repo's** concept DOI `10.5281/zenodo.20465140` (resolves to "sdm-hotspot-spatial-effort"), NOT the reproduction repo's `10.5281/zenodo.20473156`. The first published Outcome (RAtYdozk…) used the reproduction DOI by mistake — that's what this supersede corrects.
+
 ```
-https://github.com/annefou/sdm-hotspot-spatial-effort
+https://doi.org/10.5281/zenodo.20465140
 ```
 
 ### Completion date (date picker, required)
