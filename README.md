@@ -13,7 +13,11 @@
 > **Sample selection bias and presence-only distribution models: implications for background and pseudo-absence data** — replication study.
 > Reference paper: [10.1890/07-2153.1](https://doi.org/10.1890/07-2153.1)
 
-This is a self-contained replication of the headline claim of the reference paper. It produces a reproducible computational pipeline, a Zenodo-archived release with a citable DOI, and a FORRT-tagged nanopublication chain on the [Science Live platform](https://platform.sciencelive4all.org).
+This is a self-contained replication testing whether Phillips et al. (2009)'s **target-group-background** correction for sample selection bias can restore biodiversity-**hotspot** identity, for Iberian breeding birds on a HEALPix-NESTED grid, benchmarked against the EU Article 12 expert-rangemap gold standard.
+
+**Result (Contradicted):** at the ≈ 25 km reference scale, top-5% richness hotspots from target-group-background SDMs disagree with the Article 12 gold standard at **97.2 %** (museum) / **100.0 %** (all-observations) symmetric set non-overlap — *worse* than uncorrected raw GBIF richness (93.7 % / 86.6 %), and far from the Hurlbert & Jetz reference range (47.8–68.6 %). Robust to the MaxEnt feature set. Effort bias in hotspot identity is a spatial sampling-location problem that per-species modelling cannot fix — even though the same method genuinely improves per-species AUC (reproduced, Validated, in the companion [`sdm-phillips-reproduction`](https://github.com/annefou/sdm-phillips-reproduction)).
+
+It produces a reproducible computational pipeline, a Zenodo-archived release with a citable DOI, and a FORRT-tagged nanopublication chain on the [Science Live platform](https://platform.sciencelive4all.org).
 
 ---
 
