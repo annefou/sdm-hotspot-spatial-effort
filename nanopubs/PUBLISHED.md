@@ -10,7 +10,7 @@ This file is the canonical registry of published nanopub URIs for this replicati
 | Source — version DOI (latest, v0.2.0) | [10.5281/zenodo.20473377](https://doi.org/10.5281/zenodo.20473377) | Current release's immutable snapshot. (v0.1.0 = `10.5281/zenodo.20465141`, the pre-split combined release.) |
 | GitHub release | [v0.2.0](https://github.com/annefou/sdm-hotspot-spatial-effort/releases/tag/v0.2.0) | Refocused to the Iberian-hotspot replication; the Phillips reproduction split to its own repo. |
 | Docker image (GHCR) | `ghcr.io/annefou/sdm-hotspot-spatial-effort:0.2.0` (also `:latest`) | Built + pushed by `docker.yml` on release. Make the package public in repo → Packages if not already. |
-| Docker image — Zenodo DOI | _not minted_ | Optional (FAIR4RS A2). Set the `ZENODO_TOKEN` repo secret and re-run `docker.yml` to archive the image with its own DOI. |
+| Docker image — Zenodo DOI | [10.5281/zenodo.20474670](https://doi.org/10.5281/zenodo.20474670) | Concept DOI for the archived `:latest` image (version DOI `10.5281/zenodo.20474671`). FAIR4RS A2 — image preserved on Zenodo independently of GHCR. |
 
 ## Chain
 
